@@ -90,7 +90,7 @@ The router classifies columns and tables into three main workflow scenarios:
 
 Weak-cell cases are prioritized. When a column contains mostly numeric, date-like, identifier-like, empty, repetitive, or coded values, the pipeline avoids forcing Knowledge Graph entity links.
 
-### Example: Weak Header + Strong Cells
+### Weak Header + Strong Cells
 
 ```text
 col0
@@ -103,7 +103,7 @@ Amazon
 -> run CTA
 ```
 
-### Example: Strong Header + Weak Cells
+### Strong Header + Weak Cells
 
 ```text
 Year
@@ -115,7 +115,7 @@ Year
 -> infer CTA from header and table context
 ```
 
-### Example: Strong Header + Strong Cells
+### Strong Header + Strong Cells
 
 ```text
 Country
@@ -171,7 +171,7 @@ llm-semantic-table-annotation/
 └── requirements.txt
 ```
 
-Experiment and dataset-specific details are documented separately in:
+Experiment and dataset-specific details are documented in:
 
 ```text
 data/README.md
@@ -198,8 +198,6 @@ The presentation provides a concise overview of the architecture, workflow scena
 git clone https://github.com/Gerostathos/llm-semantic-table-annotation.git
 cd llm-semantic-table-annotation
 ```
-
-Replace `<repository-url>` with the actual GitHub repository URL.
 
 Alternatively, download the repository as a ZIP file, extract it, and open a terminal inside the extracted `llm-semantic-table-annotation` folder.
 
@@ -246,7 +244,7 @@ GOOGLE_API_KEY=your_google_key_here
 OPENAI_API_KEY=your_openai_key_here
 ```
 
-OpenAI is optional. The project can run with Groq, Google Gemini, OpenAI, or a local Ollama model, depending on the selected configuration.
+The project can run with Groq, Google Gemini, OpenAI, or a local Ollama model, depending on the selected configuration.
 
 Do not commit the `.env` file or any API credentials.
 
@@ -276,9 +274,9 @@ The project includes configurable Knowledge Graph clients for:
 - DBpedia
 - Wikidata
 
-Knowledge Graph lookup is used to retrieve structured entity and type candidates.
+Knowledge Graph lookup retrieves structured entity and type candidates.
 
-The LLM is then used to select the most suitable candidate based on table context.
+The LLM then selects the most suitable candidate using the cell value, column information, row context, and surrounding table evidence.
 
 The relevant implementation is located in:
 
@@ -313,10 +311,7 @@ ollama serve
 
 ## Running the Pipeline
 
-The pipeline can process either:
-
-- one CSV file,
-- or a folder containing multiple CSV files.
+The pipeline can process either one CSV file or a folder containing multiple CSV files.
 
 ### Single-File Execution
 
