@@ -7,13 +7,13 @@ This file uses spaCy to identify possible entity types in cell values.
 It does not change cell values. It only stores hints for later functions.
 """
 
-from Code.src.utils.text_utils import clean_basic_text
+from src.utils.text_utils import clean_basic_text
 from collections import Counter
-from Code.src.config import SAMPLE_VALUES_PER_COLUMN
-from Code.src.io.loader import load_csv_table
-from Code.src.preprocessing.preprocess import preprocess_table
-from Code.src.preprocessing.deduplicate import add_representative_values
-from Code.src.config import (
+from src.config import SAMPLE_VALUES_PER_COLUMN
+from src.io.loader import load_csv_table
+from src.preprocessing.preprocess import preprocess_table
+from src.preprocessing.deduplicate import add_representative_values
+from src.config import (
     DEFAULT_DATASET_PATH,
     DEFAULT_DATASET_NAME,
     DEFAULT_DATASET_SPLIT,

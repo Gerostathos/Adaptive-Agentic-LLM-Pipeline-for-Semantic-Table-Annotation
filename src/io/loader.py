@@ -6,8 +6,8 @@ Load raw CSV tables and convert them into the internal TableData structure.
 
 from pathlib import Path
 import pandas as pd
-from Code.src.core.schema import TableData
-from Code.src.config import (
+from src.core.schema import TableData
+from src.config import (
     DEFAULT_DATASET_PATH,
     DEFAULT_DATASET_NAME,
     DEFAULT_DATASET_SPLIT,

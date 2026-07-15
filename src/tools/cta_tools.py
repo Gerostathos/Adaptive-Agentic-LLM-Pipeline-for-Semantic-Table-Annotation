@@ -9,7 +9,7 @@ column using either a KG-grounded type or an LLM fallback label.
 
 from collections import Counter
 
-from Code.src.config import (
+from src.config import (
     SAMPLE_VALUES_PER_COLUMN,
     DEFAULT_LLM_PROVIDER,
     DEFAULT_LLM_MODEL,
@@ -21,13 +21,13 @@ from Code.src.config import (
     CTA_FINAL_SELECTION_MODE,
 )
 
-from Code.src.core import note_keys as NK
-from Code.src.routing.router import column_has_strong_cells, column_has_weak_cells
-from Code.src.kg.kg_manager import get_entity_types
-from Code.src.llm.llm_client import run_llm_prompt
-from Code.src.utils.text_utils import clean_basic_text, format_values_as_bullets
-from Code.src.utils.prompt_utils import format_candidates_for_prompt
-from Code.src.utils.label_parser import parse_candidate_or_label_response
+from src.core import note_keys as NK
+from src.routing.router import column_has_strong_cells, column_has_weak_cells
+from src.kg.kg_manager import get_entity_types
+from src.llm.llm_client import run_llm_prompt
+from src.utils.text_utils import clean_basic_text, format_values_as_bullets
+from src.utils.prompt_utils import format_candidates_for_prompt
+from src.utils.label_parser import parse_candidate_or_label_response
 
 
 def get_representative_values(table, col_index):

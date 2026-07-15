@@ -8,7 +8,7 @@ Command-line execution for the semantic table annotation pipeline.
 import argparse
 from pathlib import Path
 
-import Code.src.config as config
+import src.config as config
 
 
 def str_to_bool(value):
@@ -202,7 +202,7 @@ def get_csv_files(folder_path):
 
 
 def run_one_file(args, file_path):
-    from Code.src.pipeline.pipeline import run_pipeline
+    from src.pipeline.pipeline import run_pipeline
 
     print(f"\nRunning pipeline for: {file_path}")
 

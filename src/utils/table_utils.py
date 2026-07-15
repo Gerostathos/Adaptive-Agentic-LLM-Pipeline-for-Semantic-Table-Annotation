@@ -9,7 +9,7 @@ CEA, value enrichment, routing, reporting, and later workflow control.
 
 import re
 
-from Code.src.utils.text_utils import clean_basic_text
+from src.utils.text_utils import clean_basic_text
 
 
 def is_numeric_value(value):

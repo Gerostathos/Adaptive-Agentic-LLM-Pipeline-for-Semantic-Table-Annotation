@@ -7,9 +7,9 @@ rows from the table object while keeping raw prompts and long debug traces out
 of the final report.
 """
 
-from Code.src.config import LOG_SAMPLE_ROWS, LOG_MAX_CEA_CELLS
-from Code.src.preprocessing.value_enrichment import get_preferred_lookup_value
-from Code.src.utils.text_utils import clean_basic_text
+from src.config import LOG_SAMPLE_ROWS, LOG_MAX_CEA_CELLS
+from src.preprocessing.value_enrichment import get_preferred_lookup_value
+from src.utils.text_utils import clean_basic_text
 
 
 EMPTY_VALUES = ["", None, {}, []]

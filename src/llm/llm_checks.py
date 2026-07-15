@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 from google import genai
 from openai import OpenAI
 
-from Code.src.config import (
+from src.config import (
     DEFAULT_OPENAI_MODEL,
     DEFAULT_GOOGLE_MODEL,
     DEFAULT_GROQ_MODEL,
@@ -21,7 +21,7 @@ from Code.src.config import (
     LLM_API_TIMEOUT_SECONDS,
 )
 
-from Code.src.llm.llm_client import ask_llm
+from src.llm.llm_client import ask_llm
 
 
 load_dotenv()

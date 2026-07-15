@@ -13,16 +13,16 @@ Later steps decide whether each value is useful for CEA, KG lookup, NER, etc.
 
 from collections import Counter
 
-from Code.src.config import (
+from src.config import (
     DEFAULT_DATASET_PATH,
     DEFAULT_DATASET_NAME,
     DEFAULT_DATASET_SPLIT,
     SAMPLE_VALUES_PER_COLUMN,
 )
 
-from Code.src.io.loader import load_csv_table
-from Code.src.preprocessing.preprocess import preprocess_table
-from Code.src.utils.text_utils import clean_basic_text
+from src.io.loader import load_csv_table
+from src.preprocessing.preprocess import preprocess_table
+from src.utils.text_utils import clean_basic_text
 
 
 def select_representative_values(values, max_values=SAMPLE_VALUES_PER_COLUMN):

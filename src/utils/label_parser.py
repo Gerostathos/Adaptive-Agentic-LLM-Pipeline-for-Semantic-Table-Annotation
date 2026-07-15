@@ -7,7 +7,7 @@ is expected to return one final label, and this file only checks whether that
 label exactly corresponds to one candidate label.
 """
 
-from Code.src.utils.text_utils import clean_basic_text
+from src.utils.text_utils import clean_basic_text
 
 
 def get_first_answer_line(answer):

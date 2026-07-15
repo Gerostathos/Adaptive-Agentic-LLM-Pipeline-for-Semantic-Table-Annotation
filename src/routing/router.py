@@ -15,15 +15,15 @@ The router stores:
 
 import re
 
-from Code.src.config import (
+from src.config import (
     ROUTER_WEAK_HEADER_MAX_LENGTH,
     ROUTER_AUTO_GENERATED_HEADER_PATTERNS,
     ROUTER_CELL_STRENGTH_THRESHOLD,
     ROUTER_TABLE_WEAK_CELL_RATIO,
 )
-from Code.src.core import note_keys as NK
-from Code.src.utils.text_utils import clean_basic_text
-from Code.src.utils.table_utils import (
+from src.core import note_keys as NK
+from src.utils.text_utils import clean_basic_text
+from src.utils.table_utils import (
     is_numeric_value,
     is_date_like_value,
     is_id_like_value,

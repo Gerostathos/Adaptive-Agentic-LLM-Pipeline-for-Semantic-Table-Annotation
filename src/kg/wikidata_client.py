@@ -9,9 +9,9 @@ It does not know anything about tables, columns, CEA, or CTA.
 
 import time
 import requests
-from Code.src.utils.text_utils import clean_basic_text, normalize_for_matching
+from src.utils.text_utils import clean_basic_text, normalize_for_matching
 
-from Code.src.config import (
+from src.config import (
     WIKIDATA_API_URL,
     USER_AGENT,
     KG_REQUEST_DELAY_SECONDS,

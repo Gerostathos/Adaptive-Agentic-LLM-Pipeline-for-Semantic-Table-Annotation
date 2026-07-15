@@ -5,11 +5,11 @@ src/pipeline/reporting.py
 Compact report sections for one semantic table annotation run. 
 """
 
-from Code.src.config import LOG_TABLE_MAX_WIDTH
-from Code.src.utils.log_utils import log_step
-from Code.src.routing.router import STRONG_CELL_SCENARIOS
+from src.config import LOG_TABLE_MAX_WIDTH
+from src.utils.log_utils import log_step
+from src.routing.router import STRONG_CELL_SCENARIOS
 
-from Code.src.pipeline.reporting_helpers import (
+from src.pipeline.reporting_helpers import (
     count_columns_with_note,
     count_cells_with_note,
     count_selected_types,

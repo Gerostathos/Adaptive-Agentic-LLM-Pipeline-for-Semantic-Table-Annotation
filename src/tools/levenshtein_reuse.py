@@ -4,9 +4,9 @@ src/tools/levenshtein_reuse.py
 Annotation reuse utilities for Cell Entity Annotation.
 """
 
-from Code.src.config import LEVENSHTEIN_REUSE_RATIO
-from Code.src.utils.text_utils import clean_basic_text, normalize_for_matching
-from Code.src.preprocessing.value_enrichment import get_preferred_lookup_value
+from src.config import LEVENSHTEIN_REUSE_RATIO
+from src.utils.text_utils import clean_basic_text, normalize_for_matching
+from src.preprocessing.value_enrichment import get_preferred_lookup_value
 
 
 def levenshtein_distance(text_a, text_b):

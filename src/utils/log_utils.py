@@ -10,7 +10,7 @@ topic detection, or semantic table annotation internals.
 from datetime import datetime
 from pathlib import Path
 
-from Code.src.config import RUNS_LOG_DIR, LOG_SUMMARY_MAX_WIDTH
+from src.config import RUNS_LOG_DIR, LOG_SUMMARY_MAX_WIDTH
 
 
 def create_run_paths(prefix="report"):

@@ -7,10 +7,10 @@ decides the scenario, while this module calls the appropriate annotation tools
 and records which workflow stages were executed.
 """
 
-from Code.src.routing.router import STRONG_CELL_SCENARIOS, WEAK_CELL_SCENARIOS
-from Code.src.tools.topic_detection import apply_topic_detection
-from Code.src.tools.cea_tools import generate_cea_candidates, apply_cea_selection
-from Code.src.tools.cta_tools import apply_cta
+from src.routing.router import STRONG_CELL_SCENARIOS, WEAK_CELL_SCENARIOS
+from src.tools.topic_detection import apply_topic_detection
+from src.tools.cea_tools import generate_cea_candidates, apply_cea_selection
+from src.tools.cta_tools import apply_cta
 
 
 def apply_topic_detection_workflow(table, provider, model):

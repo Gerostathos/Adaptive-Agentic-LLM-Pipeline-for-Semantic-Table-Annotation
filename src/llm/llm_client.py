@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 from google import genai
 from openai import OpenAI
 
-from Code.src.config import (
+from src.config import (
     DEFAULT_LLM_PROVIDER,
     DEFAULT_OPENAI_MODEL,
     DEFAULT_GOOGLE_MODEL,
@@ -197,7 +197,7 @@ def run_llm_prompt(
     provider=DEFAULT_LLM_PROVIDER,
     model=None,
 ):
-    from Code.src.llm.prompt_manager import format_prompt
+    from src.llm.prompt_manager import format_prompt
 
     prompt = format_prompt(
         prompt_name=prompt_name,

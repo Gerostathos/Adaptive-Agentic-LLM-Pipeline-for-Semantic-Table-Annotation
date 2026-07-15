@@ -8,7 +8,7 @@ preprocessing, routing, annotation workflows, and compact report generation.
 
 from time import perf_counter
 
-from Code.src.config import (
+from src.config import (
     DEFAULT_DATASET_PATH,
     DEFAULT_DATASET_NAME,
     DEFAULT_DATASET_SPLIT,
@@ -43,24 +43,24 @@ from Code.src.config import (
     LOG_STEP_CTA,
 )
 
-from Code.src.io.loader import load_csv_table
-from Code.src.preprocessing.preprocess import preprocess_table
-from Code.src.preprocessing.deduplicate import add_representative_values
-from Code.src.preprocessing.ner_support import add_ner_hints
-from Code.src.preprocessing.value_enrichment import add_value_enrichment
+from src.io.loader import load_csv_table
+from src.preprocessing.preprocess import preprocess_table
+from src.preprocessing.deduplicate import add_representative_values
+from src.preprocessing.ner_support import add_ner_hints
+from src.preprocessing.value_enrichment import add_value_enrichment
 
-from Code.src.routing.router import route_table_columns
+from src.routing.router import route_table_columns
 
-from Code.src.pipeline.workflows import (
+from src.pipeline.workflows import (
     apply_topic_detection_workflow,
     generate_cea_candidates_workflow,
     apply_cea_selection_workflow,
     apply_cta_workflow,
 )
 
-from Code.src.utils.log_utils import create_run_paths, RunLogger
+from src.utils.log_utils import create_run_paths, RunLogger
 
-from Code.src.pipeline.reporting import (
+from src.pipeline.reporting import (
     report_pipeline_header,
     report_table_metadata,
     report_loaded_table,

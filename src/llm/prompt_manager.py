@@ -6,7 +6,7 @@ Load and format prompt templates used by the STA pipeline.
 
 from pathlib import Path
 
-from Code.src.config import DEFAULT_PROMPT_FILE
+from src.config import DEFAULT_PROMPT_FILE
 import yaml
 
 prompt_file = DEFAULT_PROMPT_FILE

@@ -7,7 +7,7 @@ retrieves KG entity candidates, asks the LLM for one final annotation label,
 and stores either a KG-grounded entity or a direct LLM semantic annotation.
 """
 
-from Code.src.config import (
+from src.config import (
     DEFAULT_LLM_PROVIDER,
     DEFAULT_LLM_MODEL,
     DEFAULT_KG_SOURCE,
@@ -18,19 +18,19 @@ from Code.src.config import (
     LEVENSHTEIN_REUSE_RATIO,
 )
 
-from Code.src.core import note_keys as NK
-from Code.src.tools.levenshtein_reuse import (
+from src.core import note_keys as NK
+from src.tools.levenshtein_reuse import (
     find_reusable_annotation,
     apply_reused_annotation,
 )
-from Code.src.preprocessing.value_enrichment import get_preferred_lookup_value
-from Code.src.kg.kg_manager import get_entity_candidates
-from Code.src.llm.llm_client import ask_llm
-from Code.src.llm.prompt_manager import format_prompt
-from Code.src.utils.text_utils import clean_basic_text
-from Code.src.utils.table_utils import format_row_context
-from Code.src.utils.prompt_utils import format_candidates_for_prompt
-from Code.src.utils.label_parser import parse_candidate_or_label_response
+from src.preprocessing.value_enrichment import get_preferred_lookup_value
+from src.kg.kg_manager import get_entity_candidates
+from src.llm.llm_client import ask_llm
+from src.llm.prompt_manager import format_prompt
+from src.utils.text_utils import clean_basic_text
+from src.utils.table_utils import format_row_context
+from src.utils.prompt_utils import format_candidates_for_prompt
+from src.utils.label_parser import parse_candidate_or_label_response
 
 
 STRONG_CELL_SCENARIOS = {

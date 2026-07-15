@@ -7,7 +7,7 @@ Low-level DBpedia client for the semantic table annotation pipeline.
 import time
 import requests
 
-from Code.src.config import (
+from src.config import (
     DBPEDIA_LOOKUP_URL,
     DBPEDIA_SPARQL_URL,
     USER_AGENT,
@@ -17,7 +17,7 @@ from Code.src.config import (
     CTA_TYPES_PER_ENTITY,
 )
 
-from Code.src.utils.text_utils import (
+from src.utils.text_utils import (
     clean_basic_text,
     clean_html_text,
     normalize_for_matching,

@@ -6,15 +6,15 @@ Knowledge graph manager for the STA pipeline.
 This file provides a simple common interface for different knowledge graphs.
 """
 
-from Code.src.config import (
+from src.config import (
     DEFAULT_KG_SOURCE,
     KG_CANDIDATE_LIMIT,
     CTA_TYPES_PER_ENTITY,
 )
 
-from Code.src.utils.text_utils import clean_basic_text
-from Code.src.kg import wikidata_client
-from Code.src.kg import dbpedia_client
+from src.utils.text_utils import clean_basic_text
+from src.kg import wikidata_client
+from src.kg import dbpedia_client
 
 
 def normalize_text(value):

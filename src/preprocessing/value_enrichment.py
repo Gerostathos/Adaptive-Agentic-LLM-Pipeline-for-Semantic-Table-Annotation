@@ -12,7 +12,7 @@ It stores:
 It does not overwrite raw_value or cleaned_value.
 """
 
-from Code.src.config import (
+from src.config import (
     SAMPLE_VALUES_PER_COLUMN,
     DEFAULT_LLM_PROVIDER,
     DEFAULT_LLM_MODEL,
@@ -21,7 +21,7 @@ from Code.src.config import (
     DEFAULT_DATASET_SPLIT,
 )
 
-from Code.src.utils.table_utils import (
+from src.utils.table_utils import (
     clean_non_empty_values,
     is_numeric_value,
     is_date_like_value,
@@ -29,13 +29,13 @@ from Code.src.utils.table_utils import (
     value_ratio,
 )
 
-from Code.src.utils.text_utils import clean_basic_text, format_values_as_bullets
-from Code.src.io.loader import load_csv_table
-from Code.src.preprocessing.preprocess import preprocess_table
-from Code.src.preprocessing.deduplicate import add_representative_values
-from Code.src.preprocessing.ner_support import add_ner_hints
-from Code.src.llm.llm_client import ask_llm
-from Code.src.llm.prompt_manager import format_prompt
+from src.utils.text_utils import clean_basic_text, format_values_as_bullets
+from src.io.loader import load_csv_table
+from src.preprocessing.preprocess import preprocess_table
+from src.preprocessing.deduplicate import add_representative_values
+from src.preprocessing.ner_support import add_ner_hints
+from src.llm.llm_client import ask_llm
+from src.llm.prompt_manager import format_prompt
 
 
 MAX_REPLACEMENT_WORDS = 8

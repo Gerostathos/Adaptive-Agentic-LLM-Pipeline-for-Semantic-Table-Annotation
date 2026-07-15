@@ -4,7 +4,7 @@ src/utils/prompt_utils.py
 Prompt formatting helpers used across the STA pipeline.
 """
 
-from Code.src.utils.text_utils import clean_basic_text
+from src.utils.text_utils import clean_basic_text
 
 
 def format_candidates_for_prompt(candidates, empty_message="0. No candidates available"):

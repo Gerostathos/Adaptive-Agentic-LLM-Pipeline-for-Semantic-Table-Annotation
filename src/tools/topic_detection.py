@@ -8,7 +8,7 @@ The inferred topic is stored in column.semantic_name and later supports
 CEA and CTA.
 """
 
-from Code.src.config import (
+from src.config import (
     SAMPLE_VALUES_PER_COLUMN,
     DEFAULT_LLM_PROVIDER,
     DEFAULT_LLM_MODEL,
@@ -19,20 +19,20 @@ from Code.src.config import (
     DEFAULT_DATASET_SPLIT,
 )
 
-from Code.src.utils.text_utils import (
+from src.utils.text_utils import (
     clean_basic_text,
     format_values_as_bullets,
     clean_short_label,
 )
 
-from Code.src.io.loader import load_csv_table
-from Code.src.preprocessing.preprocess import preprocess_table
-from Code.src.preprocessing.deduplicate import add_representative_values
-from Code.src.preprocessing.ner_support import add_ner_hints
-from Code.src.preprocessing.value_enrichment import add_value_enrichment
-from Code.src.routing.router import route_table_columns, print_routing_summary
-from Code.src.llm.llm_client import ask_llm
-from Code.src.llm.prompt_manager import format_prompt
+from src.io.loader import load_csv_table
+from src.preprocessing.preprocess import preprocess_table
+from src.preprocessing.deduplicate import add_representative_values
+from src.preprocessing.ner_support import add_ner_hints
+from src.preprocessing.value_enrichment import add_value_enrichment
+from src.routing.router import route_table_columns, print_routing_summary
+from src.llm.llm_client import ask_llm
+from src.llm.prompt_manager import format_prompt
 
 
 def get_representative_values(table, col_index):

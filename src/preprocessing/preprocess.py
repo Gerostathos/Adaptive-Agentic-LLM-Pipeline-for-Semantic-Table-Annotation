@@ -6,9 +6,9 @@ Basic preprocessing utilities for cleaning table cell values.
 This file performs lightweight, dataset-independent cleaning.
 """
 
-from Code.src.utils.text_utils import clean_basic_text
-from Code.src.io.loader import load_csv_table
-from Code.src.config import (
+from src.utils.text_utils import clean_basic_text
+from src.io.loader import load_csv_table
+from src.config import (
     DEFAULT_DATASET_PATH,
     DEFAULT_DATASET_NAME,
     DEFAULT_DATASET_SPLIT,
