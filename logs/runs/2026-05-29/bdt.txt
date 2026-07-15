@@ -1,0 +1,234 @@
+SEMANTIC TABLE ANNOTATION RUN REPORT
+====================================
+
+
+================================================================================
+00 - PIPELINE RUN OVERVIEW
+================================================================================
+report_name: report_004_200937.txt
+report_folder: logs\runs\2026-05-29
+run_number_today: 4
+timestamp: 200937
+dataset_name: biodivtab
+dataset_split: experiment
+dataset_path: data/experiments/exp1_bdt/bdt_4.csv
+llm_provider: groq
+llm_model: openai/gpt-oss-20b
+kg_source: wikidata
+run_until: cta
+
+--------------------------------------------------------------------------------
+Configuration
+--------------------------------------------------------------------------------
+SAMPLE_VALUES_PER_COLUMN: 5
+DEFAULT_KG_SOURCE: dbpedia
+KG_CANDIDATE_LIMIT: 3
+CEA_MAX_ROWS: 5
+CEA_MAX_CELLS: 10
+CTA_MAX_ENTITIES: 10
+CTA_TYPES_PER_ENTITY: 5
+USE_NER: True
+USE_VALUE_ENRICHMENT: True
+USE_CEA_REUSE: True
+LEVENSHTEIN_REUSE_RATIO: 0.2
+ROUTER_TABLE_WEAK_CELL_RATIO: 0.7
+
+--------------------------------------------------------------------------------
+Table metadata
+--------------------------------------------------------------------------------
+table_id: bdt_4
+dataset_name: biodivtab
+split: experiment
+source_file: data\experiments\exp1_bdt\bdt_4.csv
+rows: 144
+columns: 17
+
+================================================================================
+01 - LOADED TABLE SAMPLE [DONE]
+================================================================================
+purpose: Raw table sample before preprocessing.
+
+--------------------------------------------------------------------------------
+Sample
+--------------------------------------------------------------------------------
+row | 0:Samplenr | 1:Seedlingnr | 2:Plot | 3:Record | 4:Year           | 5:Planted_Species | 6:Density | 7:Treatment | 8:Dead | 9:Height_P | 10:Height_G | 11:Leaves_Liv | 12:Leaves_Dam | 13:Leaves_Dead | 14:Damage_pro | 15:Biomass_Above | 16:Biomass_Below
+----+------------+--------------+--------+----------+------------------+-------------------+-----------+-------------+--------+------------+-------------+---------------+---------------+----------------+---------------+------------------+-----------------
+0   | 1.01.2     | 1.01         | 1      | 2        | 2015 (September) | D.glaucifolia     | 1         | Light       | 0      | 43.9       | 43.9        | 23.0          | 15.0          | 0.0            | 2.0           | nan              | nan             
+1   | 1.01.0     | 1.01         | 1      | 0        | 2015 (July)      | D.glaucifolia     | 1         | Light       | 0      | 15.2       | nan         | 10.0          | nan           | nan            | nan           | nan              | nan             
+2   | 1.01.1     | 1.01         | 1      | 1        | 2015 (August)    | D.glaucifolia     | 1         | Light       | 0      | nan        | 35.2        | 17.0          | nan           | nan            | nan           | nan              | nan             
+3   | 1.01.3     | 1.01         | 1      | 3        | 2016 (September) | D.glaucifolia     | 1         | Light       | 0      | 162.0      | nan         | 136.0         | 136.0         | nan            | 30.0          | 138.04           | 66.13           
+4   | 2.01.0     | 2.01         | 2      | 0        | 2015 (July)      | C.glauca          | 4         | Shadow      | 0      | 14.6       | nan         | 1.0           | nan           | nan            | nan           | nan              | nan             
+
+================================================================================
+02 - PREPROCESSED TABLE SAMPLE [DONE]
+================================================================================
+purpose: Cleaned table sample after preprocessing.
+
+--------------------------------------------------------------------------------
+Sample
+--------------------------------------------------------------------------------
+row | 0:Samplenr | 1:Seedlingnr | 2:Plot | 3:Record | 4:Year           | 5:Planted_Species | 6:Density | 7:Treatment | 8:Dead | 9:Height_P | 10:Height_G | 11:Leaves_Liv | 12:Leaves_Dam | 13:Leaves_Dead | 14:Damage_pro | 15:Biomass_Above | 16:Biomass_Below
+----+------------+--------------+--------+----------+------------------+-------------------+-----------+-------------+--------+------------+-------------+---------------+---------------+----------------+---------------+------------------+-----------------
+0   | 1.01.2     | 1.01         | 1      | 2        | 2015 (September) | D.glaucifolia     | 1         | Light       | 0      | 43.9       | 43.9        | 23.0          | 15.0          | 0.0            | 2.0           |                  |                 
+1   | 1.01.0     | 1.01         | 1      | 0        | 2015 (July)      | D.glaucifolia     | 1         | Light       | 0      | 15.2       |             | 10.0          |               |                |               |                  |                 
+2   | 1.01.1     | 1.01         | 1      | 1        | 2015 (August)    | D.glaucifolia     | 1         | Light       | 0      |            | 35.2        | 17.0          |               |                |               |                  |                 
+3   | 1.01.3     | 1.01         | 1      | 3        | 2016 (September) | D.glaucifolia     | 1         | Light       | 0      | 162.0      |             | 136.0         | 136.0         |                | 30.0          | 138.04           | 66.13           
+4   | 2.01.0     | 2.01         | 2      | 0        | 2015 (July)      | C.glauca          | 4         | Shadow      | 0      | 14.6       |             | 1.0           |               |                |               |                  |                 
+
+================================================================================
+03 - REPRESENTATIVE VALUES [DONE]
+================================================================================
+columns_processed: 17
+sample_values_per_column: 5
+
+--------------------------------------------------------------------------------
+Column evidence
+--------------------------------------------------------------------------------
+col | raw_name        | representative_values                                         
+----+-----------------+---------------------------------------------------------------
+0   | Samplenr        | 1.01.2, 1.01.0, 1.01.1, 1.01.3, 2.01.0                        
+1   | Seedlingnr      | 1.01, 2.01, 3.04, 5.04, 6.25                                  
+2   | Plot            | 58, 53, 56, 16, 52                                            
+3   | Record          | 2, 1, 0, 3                                                    
+4   | Year            | 2015 (September), 2015 (August), 2015 (July), 2016 (September)
+5   | Planted_Species | L.glaber, Q.serrata, D.glaucifolia, C.glauca, L.formosana     
+6   | Density         | 25, 4, 1, 9                                                   
+7   | Treatment       | Shadow, Light                                                 
+8   | Dead            | 0, 1                                                          
+9   | Height_P        | 0.0, 11.0, 23.0, 18.0, 35.0                                   
+10  | Height_G        | 13.5, 17.0, 18.0, 22.0, 43.9                                  
+11  | Leaves_Liv      | 0.0, 1.0, 3.0, 8.0, 9.0                                       
+12  | Leaves_Dam      | 0.0, 6.0, 5.0, 9.0, 15.0                                      
+13  | Leaves_Dead     | 0.0, 1.0, 3.0, 5.0                                            
+14  | Damage_pro      | 5.0, 80.0, 30.0, 12.0, 10.0                                   
+15  | Biomass_Above   | 138.04, 0.66, 0.52, 1.29, 0.35                                
+16  | Biomass_Below   | 1.01, 66.13, 0.59, 0.33, 0.24                                 
+
+================================================================================
+04 - NER HINTS [DONE]
+================================================================================
+columns_processed: 17
+columns_with_dominant_ner: 16
+
+--------------------------------------------------------------------------------
+NER hints
+--------------------------------------------------------------------------------
+col | raw_name        | dominant_ner
+----+-----------------+-------------
+0   | Samplenr        | CARDINAL    
+1   | Seedlingnr      | CARDINAL    
+2   | Plot            | CARDINAL    
+3   | Record          | CARDINAL    
+4   | Year            | DATE        
+5   | Planted_Species | GPE         
+6   | Density         | CARDINAL    
+7   | Treatment       | None        
+8   | Dead            | CARDINAL    
+9   | Height_P        | CARDINAL    
+10  | Height_G        | CARDINAL    
+11  | Leaves_Liv      | CARDINAL    
+12  | Leaves_Dam      | CARDINAL    
+13  | Leaves_Dead     | CARDINAL    
+14  | Damage_pro      | CARDINAL    
+15  | Biomass_Above   | CARDINAL    
+16  | Biomass_Below   | CARDINAL    
+
+================================================================================
+05 - VALUE ENRICHMENT [DONE]
+================================================================================
+columns_processed: 17
+columns_with_value_enrichment: 2
+
+--------------------------------------------------------------------------------
+Value enrichment
+--------------------------------------------------------------------------------
+col | raw_name        | inspected_values                                          | stats                               
+----+-----------------+-----------------------------------------------------------+-------------------------------------
+5   | Planted_Species | L.glaber, Q.serrata, D.glaucifolia, C.glauca, L.formosana | total=5, keep=5, replace=0, errors=0
+7   | Treatment       | Shadow, Light                                             | total=2, keep=2, replace=0, errors=0
+
+================================================================================
+06 - ROUTING [DONE]
+================================================================================
+table_scenario: strong_header_weak_cells
+scenario_counts: {'strong_header_weak_cells': 15, 'strong_header_strong_cells': 2}
+table_cells_are_weak: True
+weak_column_ratio: 0.882
+
+--------------------------------------------------------------------------------
+Routing decisions
+--------------------------------------------------------------------------------
+col | raw_name        | scenario                   | header_weak | cell_strength | strength_%
+----+-----------------+----------------------------+-------------+---------------+-----------
+0   | Samplenr        | strong_header_weak_cells   | False       | weak          | 0.0%      
+1   | Seedlingnr      | strong_header_weak_cells   | False       | weak          | 0.0%      
+2   | Plot            | strong_header_weak_cells   | False       | weak          | 0.0%      
+3   | Record          | strong_header_weak_cells   | False       | weak          | 0.0%      
+4   | Year            | strong_header_weak_cells   | False       | weak          | 0.0%      
+5   | Planted_Species | strong_header_strong_cells | False       | strong        | 100.0%    
+6   | Density         | strong_header_weak_cells   | False       | weak          | 0.0%      
+7   | Treatment       | strong_header_strong_cells | False       | strong        | 100.0%    
+8   | Dead            | strong_header_weak_cells   | False       | weak          | 0.0%      
+9   | Height_P        | strong_header_weak_cells   | False       | weak          | 0.0%      
+10  | Height_G        | strong_header_weak_cells   | False       | weak          | 0.0%      
+11  | Leaves_Liv      | strong_header_weak_cells   | False       | weak          | 0.0%      
+12  | Leaves_Dam      | strong_header_weak_cells   | False       | weak          | 0.0%      
+13  | Leaves_Dead     | strong_header_weak_cells   | False       | weak          | 0.0%      
+14  | Damage_pro      | strong_header_weak_cells   | False       | weak          | 0.0%      
+15  | Biomass_Above   | strong_header_weak_cells   | False       | weak          | 0.0%      
+16  | Biomass_Below   | strong_header_weak_cells   | False       | weak          | 0.0%      
+
+================================================================================
+07 - TOPIC DETECTION [SKIPPED]
+================================================================================
+reason: no column topic update required
+
+================================================================================
+08 - CEA CANDIDATES [SKIPPED]
+================================================================================
+reason: no KG candidates produced
+
+================================================================================
+09 - CEA SELECTION [SKIPPED]
+================================================================================
+reason: no final cell annotations
+
+================================================================================
+10 - CTA SELECTION [DONE]
+================================================================================
+kg_source: wikidata
+provider: groq
+model: openai/gpt-oss-20b
+max_entities: 10
+types_per_entity: 5
+columns_with_final_type: 17
+
+--------------------------------------------------------------------------------
+Final CTA annotations
+--------------------------------------------------------------------------------
+col | raw_name        | inferred_name   | kg_type_candidates | column_type_source | column_type_label   | llm_status
+----+-----------------+-----------------+--------------------+--------------------+---------------------+-----------
+0   | Samplenr        | Samplenr        | 0                  | llm                | Sample ID           | ok        
+1   | Seedlingnr      | Seedlingnr      | 0                  | llm                | Seedling ID         | ok        
+2   | Plot            | Plot            | 0                  | llm                | Plot ID             | ok        
+3   | Record          | Record          | 0                  | llm                | Record ID           | ok        
+4   | Year            | Year            | 0                  | llm                | Date                | ok        
+5   | Planted_Species | Planted_Species | 0                  | llm                | Plant Species       | ok        
+6   | Density         | Density         | 0                  | llm                | Density             | ok        
+7   | Treatment       | Treatment       | 0                  | llm                | Light treatment     | ok        
+8   | Dead            | Dead            | 0                  | llm                | Dead                | ok        
+9   | Height_P        | Height_P        | 0                  | llm                | Plant Height        | ok        
+10  | Height_G        | Height_G        | 0                  | llm                | Plant Height        | ok        
+11  | Leaves_Liv      | Leaves_Liv      | 0                  | llm                | Living leaf count   | ok        
+12  | Leaves_Dam      | Leaves_Dam      | 0                  | llm                | Leaf damage         | ok        
+13  | Leaves_Dead     | Leaves_Dead     | 0                  | llm                | Dead Leaf Count     | ok        
+14  | Damage_pro      | Damage_pro      | 0                  | llm                | Damage percentage   | ok        
+15  | Biomass_Above   | Biomass_Above   | 0                  | llm                | AboveGroundBiomass  | ok        
+16  | Biomass_Below   | Biomass_Below   | 0                  | llm                | Belowground biomass | ok        
+
+================================================================================
+11 - RUNTIME
+================================================================================
+status: completed
+final_step: cta
+total_seconds: 53.515

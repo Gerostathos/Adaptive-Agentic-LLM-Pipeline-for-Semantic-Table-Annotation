@@ -1,0 +1,212 @@
+SEMANTIC TABLE ANNOTATION RUN REPORT
+====================================
+
+
+================================================================================
+00 - PIPELINE RUN OVERVIEW
+================================================================================
+report_name: report_001_230404.txt
+report_folder: logs\runs\2026-05-29
+run_number_today: 1
+timestamp: 230404
+dataset_name: custom
+dataset_split: experiment
+dataset_path: data/experiments/exp4_custom/top_ecommerce_brands.csv
+llm_provider: google
+llm_model: gemini-3.1-flash-lite
+kg_source: dbpedia
+run_until: cta
+
+--------------------------------------------------------------------------------
+Configuration
+--------------------------------------------------------------------------------
+SAMPLE_VALUES_PER_COLUMN: 5
+DEFAULT_KG_SOURCE: dbpedia
+KG_CANDIDATE_LIMIT: 3
+CEA_MAX_ROWS: 5
+CEA_MAX_CELLS: 8
+CTA_MAX_ENTITIES: 10
+CTA_TYPES_PER_ENTITY: 5
+USE_NER: True
+USE_VALUE_ENRICHMENT: False
+USE_CEA_REUSE: True
+LEVENSHTEIN_REUSE_RATIO: 0.2
+ROUTER_TABLE_WEAK_CELL_RATIO: 0.7
+
+--------------------------------------------------------------------------------
+Table metadata
+--------------------------------------------------------------------------------
+table_id: top_ecommerce_brands
+dataset_name: custom
+split: experiment
+source_file: data\experiments\exp4_custom\top_ecommerce_brands.csv
+rows: 66
+columns: 4
+
+================================================================================
+01 - LOADED TABLE SAMPLE [DONE]
+================================================================================
+purpose: Raw table sample before preprocessing.
+
+--------------------------------------------------------------------------------
+Sample
+--------------------------------------------------------------------------------
+row | 0:col_0      | 1:col_1 | 2:col_2         | 3:col_3  
+----+--------------+---------+-----------------+----------
+0   | Amazon       | 1994    | Jeff Bezos      | USA      
+1   | Alibaba      | 1999    | Jack Ma         | China    
+2   | Shopify      | 2006    | Tobias Lütke    | Canada   
+3   | PDD Holdings | 2015    | Colin Huang     | China    
+4   | MercadoLibre | 1999    | Marcos Galperin | Argentina
+
+================================================================================
+02 - PREPROCESSED TABLE SAMPLE [DONE]
+================================================================================
+purpose: Cleaned table sample after preprocessing.
+
+--------------------------------------------------------------------------------
+Sample
+--------------------------------------------------------------------------------
+row | 0:col_0      | 1:col_1 | 2:col_2         | 3:col_3  
+----+--------------+---------+-----------------+----------
+0   | Amazon       | 1994    | Jeff Bezos      | USA      
+1   | Alibaba      | 1999    | Jack Ma         | China    
+2   | Shopify      | 2006    | Tobias Lütke    | Canada   
+3   | PDD Holdings | 2015    | Colin Huang     | China    
+4   | MercadoLibre | 1999    | Marcos Galperin | Argentina
+
+================================================================================
+03 - REPRESENTATIVE VALUES [DONE]
+================================================================================
+columns_processed: 4
+sample_values_per_column: 5
+
+--------------------------------------------------------------------------------
+Column evidence
+--------------------------------------------------------------------------------
+col | raw_name | representative_values                                          
+----+----------+----------------------------------------------------------------
+0   | col_0    | Amazon, Alibaba, Shopify, PDD Holdings, MercadoLibre           
+1   | col_1    | 1999, 2011, 2006, 2012, 2009                                   
+2   | col_2    | Jeff Bezos, Jack Ma, Tobias Lütke, Colin Huang, Marcos Galperin
+3   | col_3    | USA, China, UK, Germany, Japan                                 
+
+================================================================================
+04 - NER HINTS [DONE]
+================================================================================
+columns_processed: 4
+columns_with_dominant_ner: 4
+
+--------------------------------------------------------------------------------
+NER hints
+--------------------------------------------------------------------------------
+col | raw_name | dominant_ner
+----+----------+-------------
+0   | col_0    | ORG         
+1   | col_1    | DATE        
+2   | col_2    | PERSON      
+3   | col_3    | GPE         
+
+================================================================================
+05 - VALUE ENRICHMENT [SKIPPED]
+================================================================================
+reason: value enrichment disabled
+
+================================================================================
+06 - ROUTING [DONE]
+================================================================================
+table_scenario: weak_header_strong_cells
+scenario_counts: {'weak_header_strong_cells': 3, 'strong_header_weak_cells': 1}
+table_cells_are_weak: False
+weak_column_ratio: 0.25
+
+--------------------------------------------------------------------------------
+Routing decisions
+--------------------------------------------------------------------------------
+col | raw_name | scenario                 | header_weak | cell_strength | strength_%
+----+----------+--------------------------+-------------+---------------+-----------
+0   | col_0    | weak_header_strong_cells | True        | strong        | 100.0%    
+1   | col_1    | strong_header_weak_cells | True        | weak          | 0.0%      
+2   | col_2    | weak_header_strong_cells | True        | strong        | 100.0%    
+3   | col_3    | weak_header_strong_cells | True        | strong        | 100.0%    
+
+================================================================================
+07 - TOPIC DETECTION [DONE]
+================================================================================
+
+--------------------------------------------------------------------------------
+Inferred column names
+--------------------------------------------------------------------------------
+col | raw_name | inferred_name       
+----+----------+---------------------
+0   | col_0    | E-commerce Companies
+1   | col_1    | Year                
+2   | col_2    | Business Founders   
+3   | col_3    | Country             
+
+================================================================================
+08 - CEA CANDIDATES [DONE]
+================================================================================
+kg_source: dbpedia
+candidate_limit: 3
+max_rows: 5
+cells_with_candidates: 15
+
+--------------------------------------------------------------------------------
+CEA candidate sample
+--------------------------------------------------------------------------------
+row | col | column               | cell_value | entity_candidate_count | top_entity_candidate
+----+-----+----------------------+------------+------------------------+---------------------
+0   | 0   | E-commerce Companies | Amazon     | 3                      | Amazon (company)    
+0   | 2   | Business Founders    | Jeff Bezos | 3                      | Jeff Bezos          
+0   | 3   | Country              | USA        | 3                      | United States       
+1   | 0   | E-commerce Companies | Alibaba    | 3                      | UTV Motion Pictures 
+1   | 2   | Business Founders    | Jack Ma    | 3                      | Linebacker          
+
+================================================================================
+09 - CEA SELECTION [DONE]
+================================================================================
+provider: google
+model: gemini-3.1-flash-lite
+max_cells: 8
+reuse_enabled: True
+cells_with_final_annotation: 8
+cells_reused_by_levenshtein: 0
+
+--------------------------------------------------------------------------------
+Final CEA annotations
+--------------------------------------------------------------------------------
+row | col | column               | cell_value | cell_annotation_source | cell_annotation_label | llm_status | reuse
+----+-----+----------------------+------------+------------------------+-----------------------+------------+------
+0   | 0   | E-commerce Companies | Amazon     | kg                     | Amazon (company)      | ok         | False
+0   | 2   | Business Founders    | Jeff Bezos | kg                     | Jeff Bezos            | ok         | False
+0   | 3   | Country              | USA        | kg                     | United States         | ok         | False
+1   | 0   | E-commerce Companies | Alibaba    | kg                     | Alibaba Group         | ok         | False
+1   | 2   | Business Founders    | Jack Ma    | kg                     | Jack Ma               | ok         | False
+
+================================================================================
+10 - CTA SELECTION [DONE]
+================================================================================
+kg_source: dbpedia
+provider: google
+model: gemini-3.1-flash-lite
+max_entities: 10
+types_per_entity: 5
+columns_with_final_type: 4
+
+--------------------------------------------------------------------------------
+Final CTA annotations
+--------------------------------------------------------------------------------
+col | raw_name | inferred_name        | kg_type_candidates | top_kg_type_candidate | column_type_source | column_type_label | llm_status
+----+----------+----------------------+--------------------+-----------------------+--------------------+-------------------+-----------
+0   | col_0    | E-commerce Companies | 3                  | Company               | kg                 | Company           | ok        
+1   | col_1    | Year                 | 0                  |                       | llm                | Year              | ok        
+2   | col_2    | Business Founders    | 5                  | Person                | kg                 | Person            | ok        
+3   | col_3    | Country              | 4                  | Place                 | kg                 | Country           | ok        
+
+================================================================================
+11 - RUNTIME
+================================================================================
+status: completed
+final_step: cta
+total_seconds: 58.996

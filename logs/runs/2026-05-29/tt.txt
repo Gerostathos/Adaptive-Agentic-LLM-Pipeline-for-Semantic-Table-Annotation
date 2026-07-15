@@ -1,0 +1,227 @@
+SEMANTIC TABLE ANNOTATION RUN REPORT
+====================================
+
+
+================================================================================
+00 - PIPELINE RUN OVERVIEW
+================================================================================
+report_name: report_004_005824.txt
+report_folder: logs\runs\2026-05-29
+run_number_today: 4
+timestamp: 005824
+dataset_name: toughtables
+dataset_split: experiment
+dataset_path: data/experiments/exp2_tt/tt_2.csv
+llm_provider: groq
+llm_model: openai/gpt-oss-20b
+kg_source: dbpedia
+run_until: cta
+
+--------------------------------------------------------------------------------
+Configuration
+--------------------------------------------------------------------------------
+SAMPLE_VALUES_PER_COLUMN: 5
+DEFAULT_KG_SOURCE: dbpedia
+KG_CANDIDATE_LIMIT: 3
+CEA_MAX_ROWS: 5
+CEA_MAX_CELLS: 8
+CTA_MAX_ENTITIES: 10
+CTA_TYPES_PER_ENTITY: 5
+USE_NER: True
+USE_VALUE_ENRICHMENT: True
+USE_CEA_REUSE: True
+LEVENSHTEIN_REUSE_RATIO: 0.2
+ROUTER_TABLE_WEAK_CELL_RATIO: 0.7
+
+--------------------------------------------------------------------------------
+Table metadata
+--------------------------------------------------------------------------------
+table_id: tt_2
+dataset_name: toughtables
+split: experiment
+source_file: data\experiments\exp2_tt\tt_2.csv
+rows: 8219
+columns: 5
+
+================================================================================
+01 - LOADED TABLE SAMPLE [DONE]
+================================================================================
+purpose: Raw table sample before preprocessing.
+
+--------------------------------------------------------------------------------
+Sample
+--------------------------------------------------------------------------------
+row | 0:col0            | 1:col1     | 2:col2      | 3:col3    | 4:col4       
+----+-------------------+------------+-------------+-----------+--------------
+0   | Ben Chapman       | 1908-12-25 | Nashville   | Tennessee | United States
+1   | John Noel         | 1888-02-06 | Nashville   | Tennessee | United States
+2   | William Schneider | 1959-04-25 | Syracuse    | New York  | United States
+3   | Kevin Lee         | 1971-01-01 | Mobile      | Alabama   | United States
+4   | Angela Little     | 1972-07-22 | Albertville | Alabama   | United States
+
+================================================================================
+02 - PREPROCESSED TABLE SAMPLE [DONE]
+================================================================================
+purpose: Cleaned table sample after preprocessing.
+
+--------------------------------------------------------------------------------
+Sample
+--------------------------------------------------------------------------------
+row | 0:col0            | 1:col1     | 2:col2      | 3:col3    | 4:col4       
+----+-------------------+------------+-------------+-----------+--------------
+0   | Ben Chapman       | 1908-12-25 | Nashville   | Tennessee | United States
+1   | John Noel         | 1888-02-06 | Nashville   | Tennessee | United States
+2   | William Schneider | 1959-04-25 | Syracuse    | New York  | United States
+3   | Kevin Lee         | 1971-01-01 | Mobile      | Alabama   | United States
+4   | Angela Little     | 1972-07-22 | Albertville | Alabama   | United States
+
+================================================================================
+03 - REPRESENTATIVE VALUES [DONE]
+================================================================================
+columns_processed: 5
+sample_values_per_column: 5
+
+--------------------------------------------------------------------------------
+Column evidence
+--------------------------------------------------------------------------------
+col | raw_name | representative_values                                             
+----+----------+-------------------------------------------------------------------
+0   | col0     | Chris Smith, Charles Davis, Jeff Smith, Roy Williams, Robert White
+1   | col1     | 1969-06-09, 1970-08-31, 1948-03-09, 1952-01-30, 1949-04-02        
+2   | col2     | Portland, Birmingham, Memphis, Louisville, Jackson                
+3   | col3     | California, Texas, Georgia (U.S. state), Massachusetts, Alabama   
+4   | col4     | United States                                                     
+
+================================================================================
+04 - NER HINTS [DONE]
+================================================================================
+columns_processed: 5
+columns_with_dominant_ner: 5
+
+--------------------------------------------------------------------------------
+NER hints
+--------------------------------------------------------------------------------
+col | raw_name | dominant_ner
+----+----------+-------------
+0   | col0     | PERSON      
+1   | col1     | DATE        
+2   | col2     | GPE         
+3   | col3     | GPE         
+4   | col4     | GPE         
+
+================================================================================
+05 - VALUE ENRICHMENT [DONE]
+================================================================================
+columns_processed: 5
+columns_with_value_enrichment: 3
+
+--------------------------------------------------------------------------------
+Value enrichment
+--------------------------------------------------------------------------------
+col | raw_name | inspected_values                                                   | stats                               
+----+----------+--------------------------------------------------------------------+-------------------------------------
+0   | col0     | Chris Smith, Charles Davis, Jeff Smith, Roy Williams, Robert White | total=5, keep=5, replace=0, errors=0
+2   | col2     | Portland, Birmingham, Memphis, Louisville, Jackson                 | total=5, keep=5, replace=0, errors=0
+3   | col3     | California, Texas, Georgia (U.S. state), Massachusetts, Alabama    | total=5, keep=5, replace=0, errors=0
+
+================================================================================
+06 - ROUTING [DONE]
+================================================================================
+table_scenario: weak_header_strong_cells
+scenario_counts: {'weak_header_strong_cells': 4, 'strong_header_weak_cells': 1}
+table_cells_are_weak: False
+weak_column_ratio: 0.2
+
+--------------------------------------------------------------------------------
+Routing decisions
+--------------------------------------------------------------------------------
+col | raw_name | scenario                 | header_weak | cell_strength | strength_%
+----+----------+--------------------------+-------------+---------------+-----------
+0   | col0     | weak_header_strong_cells | True        | strong        | 100.0%    
+1   | col1     | strong_header_weak_cells | True        | weak          | 0.0%      
+2   | col2     | weak_header_strong_cells | True        | strong        | 100.0%    
+3   | col3     | weak_header_strong_cells | True        | strong        | 100.0%    
+4   | col4     | weak_header_strong_cells | True        | strong        | 100.0%    
+
+================================================================================
+07 - TOPIC DETECTION [DONE]
+================================================================================
+
+--------------------------------------------------------------------------------
+Inferred column names
+--------------------------------------------------------------------------------
+col | raw_name | inferred_name
+----+----------+--------------
+0   | col0     | Person Name  
+1   | col1     | Date         
+2   | col2     | City         
+3   | col3     | U.S. state   
+4   | col4     | Country      
+
+================================================================================
+08 - CEA CANDIDATES [DONE]
+================================================================================
+kg_source: dbpedia
+candidate_limit: 3
+max_rows: 5
+cells_with_candidates: 20
+
+--------------------------------------------------------------------------------
+CEA candidate sample
+--------------------------------------------------------------------------------
+row | col | column      | cell_value    | entity_candidate_count | top_entity_candidate
+----+-----+-------------+---------------+------------------------+---------------------
+0   | 0   | Person Name | Ben Chapman   | 3                      | Ben Chapman         
+0   | 2   | City        | Nashville     | 3                      | Nashville, Tennessee
+0   | 3   | U.S. state  | Tennessee     | 3                      | Tennessee           
+0   | 4   | Country     | United States | 3                      | United States       
+1   | 0   | Person Name | John Noel     | 3                      | Philip Noel-Baker   
+
+================================================================================
+09 - CEA SELECTION [DONE]
+================================================================================
+provider: groq
+model: openai/gpt-oss-20b
+max_cells: 8
+reuse_enabled: True
+cells_with_final_annotation: 8
+cells_reused_by_levenshtein: 3
+
+--------------------------------------------------------------------------------
+Final CEA annotations
+--------------------------------------------------------------------------------
+row | col | column      | cell_value    | cell_annotation_source | cell_annotation_label  | llm_status | reuse
+----+-----+-------------+---------------+------------------------+------------------------+------------+------
+0   | 0   | Person Name | Ben Chapman   | kg                     | Ben Chapman (baseball) | ok         | False
+0   | 2   | City        | Nashville     | kg                     | Nashville, Tennessee   | ok         | False
+0   | 3   | U.S. state  | Tennessee     | kg                     | Tennessee              | ok         | False
+0   | 4   | Country     | United States | kg                     | United States          | ok         | False
+1   | 0   | Person Name | John Noel     | kg                     | John Noel              | ok         | False
+
+================================================================================
+10 - CTA SELECTION [DONE]
+================================================================================
+kg_source: dbpedia
+provider: groq
+model: openai/gpt-oss-20b
+max_entities: 10
+types_per_entity: 5
+columns_with_final_type: 5
+
+--------------------------------------------------------------------------------
+Final CTA annotations
+--------------------------------------------------------------------------------
+col | raw_name | inferred_name | kg_type_candidates | top_kg_type_candidate | column_type_source | column_type_label    | llm_status
+----+----------+---------------+--------------------+-----------------------+--------------------+----------------------+-----------
+0   | col0     | Person Name   | 5                  | Person                | kg                 | Person               | ok        
+1   | col1     | Date          | 0                  |                       | llm                | Date                 | ok        
+2   | col2     | City          | 5                  | Place                 | kg                 | City                 | ok        
+3   | col3     | U.S. state    | 5                  | Place                 | kg                 | AdministrativeRegion | ok        
+4   | col4     | Country       | 4                  | Place                 | kg                 | Country              | ok        
+
+================================================================================
+11 - RUNTIME
+================================================================================
+status: completed
+final_step: cta
+total_seconds: 45.697

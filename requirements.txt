@@ -1,0 +1,11 @@
+pandas
+requests
+openai
+google-genai
+python-dotenv
+pyyaml
+rapidfuzz
+tqdm
+click
+spacy
+jupyter

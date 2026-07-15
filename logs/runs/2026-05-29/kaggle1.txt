@@ -1,0 +1,225 @@
+SEMANTIC TABLE ANNOTATION RUN REPORT
+====================================
+
+
+================================================================================
+00 - PIPELINE RUN OVERVIEW
+================================================================================
+report_name: report_001_225433.txt
+report_folder: logs\runs\2026-05-29
+run_number_today: 1
+timestamp: 225433
+dataset_name: custom
+dataset_split: experiment
+dataset_path: data/experiments/exp3_custom/worlds_best_restaurants.csv
+llm_provider: groq
+llm_model: openai/gpt-oss-20b
+kg_source: dbpedia
+run_until: cta
+
+--------------------------------------------------------------------------------
+Configuration
+--------------------------------------------------------------------------------
+SAMPLE_VALUES_PER_COLUMN: 5
+DEFAULT_KG_SOURCE: dbpedia
+KG_CANDIDATE_LIMIT: 3
+CEA_MAX_ROWS: 5
+CEA_MAX_CELLS: 10
+CTA_MAX_ENTITIES: 10
+CTA_TYPES_PER_ENTITY: 5
+USE_NER: True
+USE_VALUE_ENRICHMENT: True
+USE_CEA_REUSE: True
+LEVENSHTEIN_REUSE_RATIO: 0.2
+ROUTER_TABLE_WEAK_CELL_RATIO: 0.7
+
+--------------------------------------------------------------------------------
+Table metadata
+--------------------------------------------------------------------------------
+table_id: worlds_best_restaurants
+dataset_name: custom
+split: experiment
+source_file: data\experiments\exp3_custom\worlds_best_restaurants.csv
+rows: 1050
+columns: 7
+
+================================================================================
+01 - LOADED TABLE SAMPLE [DONE]
+================================================================================
+purpose: Raw table sample before preprocessing.
+
+--------------------------------------------------------------------------------
+Sample
+--------------------------------------------------------------------------------
+row | 0:year | 1:rank | 2:restaurant             | 3:location  | 4:country      | 5:lat       | 6:lng       
+----+--------+--------+--------------------------+-------------+----------------+-------------+-------------
+0   | 2002   | 1      | El Bulli                 | Roses       | Spain          | 42.2639489  | 3.1795528   
+1   | 2002   | 2      | Restaurant Gordon Ramsay | London      | United Kingdom | 51.5072178  | -0.1275862  
+2   | 2002   | 3      | The French Laundry       | Yountville  | United States  | 38.401578   | -122.3608105
+3   | 2002   | 4      | Rockpool                 | Sydney      | Australia      | -33.8688197 | 151.2092955 
+4   | 2002   | 5      | Spoon des Iles           | Ile Maurice | Mauritius      | -20.348404  | 57.552152   
+
+================================================================================
+02 - PREPROCESSED TABLE SAMPLE [DONE]
+================================================================================
+purpose: Cleaned table sample after preprocessing.
+
+--------------------------------------------------------------------------------
+Sample
+--------------------------------------------------------------------------------
+row | 0:year | 1:rank | 2:restaurant             | 3:location  | 4:country      | 5:lat       | 6:lng       
+----+--------+--------+--------------------------+-------------+----------------+-------------+-------------
+0   | 2002   | 1      | El Bulli                 | Roses       | Spain          | 42.2639489  | 3.1795528   
+1   | 2002   | 2      | Restaurant Gordon Ramsay | London      | United Kingdom | 51.5072178  | -0.1275862  
+2   | 2002   | 3      | The French Laundry       | Yountville  | United States  | 38.401578   | -122.3608105
+3   | 2002   | 4      | Rockpool                 | Sydney      | Australia      | -33.8688197 | 151.2092955 
+4   | 2002   | 5      | Spoon des Iles           | Ile Maurice | Mauritius      | -20.348404  | 57.552152   
+
+================================================================================
+03 - REPRESENTATIVE VALUES [DONE]
+================================================================================
+columns_processed: 7
+sample_values_per_column: 5
+
+--------------------------------------------------------------------------------
+Column evidence
+--------------------------------------------------------------------------------
+col | raw_name   | representative_values                                     
+----+------------+-----------------------------------------------------------
+0   | year       | 2002, 2003, 2004, 2005, 2006                              
+1   | rank       | 22, 23, 1, 2, 3                                           
+2   | restaurant | Arpège, Mugaritz, Le Calandre, Le Bernardin, Arzak        
+3   | location   | Paris, London, New York, Tokyo, San Sebastian             
+4   | country    | United States, France, Spain, United Kingdom, Italy       
+5   | lat        | 48.8575475, 51.5072178, 40.7127753, 35.6764225, 43.318237 
+6   | lng        | 2.3513765, -0.1275862, -74.0059728, 139.650027, -1.9817051
+
+================================================================================
+04 - NER HINTS [DONE]
+================================================================================
+columns_processed: 7
+columns_with_dominant_ner: 7
+
+--------------------------------------------------------------------------------
+NER hints
+--------------------------------------------------------------------------------
+col | raw_name   | dominant_ner
+----+------------+-------------
+0   | year       | DATE        
+1   | rank       | CARDINAL    
+2   | restaurant | ORG         
+3   | location   | GPE         
+4   | country    | GPE         
+5   | lat        | CARDINAL    
+6   | lng        | CARDINAL    
+
+================================================================================
+05 - VALUE ENRICHMENT [DONE]
+================================================================================
+columns_processed: 7
+columns_with_value_enrichment: 3
+
+--------------------------------------------------------------------------------
+Value enrichment
+--------------------------------------------------------------------------------
+col | raw_name   | inspected_values                                    | stats                               
+----+------------+-----------------------------------------------------+-------------------------------------
+2   | restaurant | Arpège, Mugaritz, Le Calandre, Le Bernardin, Arzak  | total=5, keep=5, replace=0, errors=0
+3   | location   | Paris, London, New York, Tokyo, San Sebastian       | total=5, keep=5, replace=0, errors=0
+4   | country    | United States, France, Spain, United Kingdom, Italy | total=5, keep=5, replace=0, errors=0
+
+================================================================================
+06 - ROUTING [DONE]
+================================================================================
+table_scenario: strong_header_strong_cells
+scenario_counts: {'strong_header_weak_cells': 4, 'strong_header_strong_cells': 3}
+table_cells_are_weak: False
+weak_column_ratio: 0.571
+
+--------------------------------------------------------------------------------
+Routing decisions
+--------------------------------------------------------------------------------
+col | raw_name   | scenario                   | header_weak | cell_strength | strength_%
+----+------------+----------------------------+-------------+---------------+-----------
+0   | year       | strong_header_weak_cells   | False       | weak          | 0.0%      
+1   | rank       | strong_header_weak_cells   | False       | weak          | 0.0%      
+2   | restaurant | strong_header_strong_cells | False       | strong        | 100.0%    
+3   | location   | strong_header_strong_cells | False       | strong        | 100.0%    
+4   | country    | strong_header_strong_cells | False       | strong        | 100.0%    
+5   | lat        | strong_header_weak_cells   | False       | weak          | 0.0%      
+6   | lng        | strong_header_weak_cells   | False       | weak          | 0.0%      
+
+================================================================================
+07 - TOPIC DETECTION [SKIPPED]
+================================================================================
+reason: no column topic update required
+
+================================================================================
+08 - CEA CANDIDATES [DONE]
+================================================================================
+kg_source: dbpedia
+candidate_limit: 3
+max_rows: 5
+cells_with_candidates: 15
+
+--------------------------------------------------------------------------------
+CEA candidate sample
+--------------------------------------------------------------------------------
+row | col | column     | cell_value               | entity_candidate_count | top_entity_candidate                                  
+----+-----+------------+--------------------------+------------------------+-------------------------------------------------------
+0   | 2   | restaurant | El Bulli                 | 3                      | El Bulli                                              
+0   | 3   | location   | Roses                    | 3                      | Guns N' Roses                                         
+0   | 4   | country    | Spain                    | 3                      | Spain                                                 
+1   | 2   | restaurant | Restaurant Gordon Ramsay | 3                      | List of restaurants owned or operated by Gordon Ramsay
+1   | 3   | location   | London                   | 3                      | London                                                
+
+================================================================================
+09 - CEA SELECTION [DONE]
+================================================================================
+provider: groq
+model: openai/gpt-oss-20b
+max_cells: 10
+reuse_enabled: True
+cells_with_final_annotation: 10
+cells_reused_by_levenshtein: 0
+
+--------------------------------------------------------------------------------
+Final CEA annotations
+--------------------------------------------------------------------------------
+row | col | column     | cell_value               | cell_annotation_source | cell_annotation_label    | llm_status | reuse
+----+-----+------------+--------------------------+------------------------+--------------------------+------------+------
+0   | 2   | restaurant | El Bulli                 | kg                     | El Bulli                 | ok         | False
+0   | 3   | location   | Roses                    | llm                    | Place                    | ok         | False
+0   | 4   | country    | Spain                    | kg                     | Spain                    | ok         | False
+1   | 2   | restaurant | Restaurant Gordon Ramsay | kg                     | Restaurant Gordon Ramsay | ok         | False
+1   | 3   | location   | London                   | kg                     | London                   | ok         | False
+
+================================================================================
+10 - CTA SELECTION [DONE]
+================================================================================
+kg_source: dbpedia
+provider: groq
+model: openai/gpt-oss-20b
+max_entities: 10
+types_per_entity: 5
+columns_with_final_type: 7
+
+--------------------------------------------------------------------------------
+Final CTA annotations
+--------------------------------------------------------------------------------
+col | raw_name   | inferred_name | kg_type_candidates | top_kg_type_candidate  | column_type_source | column_type_label | llm_status
+----+------------+---------------+--------------------+------------------------+--------------------+-------------------+-----------
+0   | year       | year          | 0                  |                        | llm                | Year              | ok        
+1   | rank       | rank          | 0                  |                        | llm                | Rank              | ok        
+2   | restaurant | restaurant    | 3                  | ArchitecturalStructure | kg                 | Restaurant        | ok        
+3   | location   | location      | 5                  | Place                  | kg                 | City              | ok        
+4   | country    | country       | 4                  | Place                  | kg                 | Country           | ok        
+5   | lat        | lat           | 0                  |                        | llm                | Latitude          | ok        
+6   | lng        | lng           | 0                  |                        | llm                | Longitude         | ok        
+
+================================================================================
+11 - RUNTIME
+================================================================================
+status: completed
+final_step: cta
+total_seconds: 55.089

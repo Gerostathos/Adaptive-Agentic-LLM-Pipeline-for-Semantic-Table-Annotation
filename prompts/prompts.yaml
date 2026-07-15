@@ -1,0 +1,131 @@
+value_enrichment: |
+  You are assisting with Semantic Table Annotation.
+
+  Inspect representative values from one table column and decide whether each inspected value should be kept as-is or normalized before knowledge graph lookup.
+
+  Column name or inferred topic:
+  {column_name}
+
+  Dominant entity type, if available:
+  {dominant_entity_type}
+
+  Representative values from the same column:
+  {representative_values}
+
+  Values to inspect:
+  {cell_value}
+
+  Decision rules:
+  - Return one decision for each inspected value.
+  - Use KEEP when the value is already suitable for knowledge graph lookup.
+  - Use KEEP when the value is specific, complete, understandable, or safely searchable.
+  - Use KEEP when the evidence is not strong enough to rewrite the value.
+  - Use REPLACE only for clear misspellings, abbreviations, incomplete names, or inconsistent variants.
+  - The replacement must preserve the original meaning and specificity.
+  - The replacement must improve lookup clarity.
+  - Do not make values broader or more generic.
+  - Do not invent missing information.
+  - Do not change numbers, prices, ratings, identifiers, or codes unless clearly malformed.
+  - Do not add explanations.
+  - Do not use markdown.
+  - Return only the required lines.
+
+  Required output:
+  original_value -> KEEP
+  original_value -> REPLACE: normalized_value
+
+topic_detection: |
+  You are assisting with Semantic Table Annotation.
+
+  Infer one working column topic that can support later CEA and CTA steps.
+
+  Raw column name:
+  {raw_column_name}
+
+  Dominant entity type, if available:
+  {dominant_entity_type}
+
+  Representative cell values:
+  {cell_values}
+
+  Decision rules:
+  - Return one clean column topic only.
+  - The topic must describe the semantic role of the whole column.
+  - Use the representative values as the main evidence.
+  - Use the raw column name only if it provides useful meaning.
+  - Use the dominant entity type only as supporting evidence.
+  - Prefer a general column role over a specific entity name.
+  - Prefer compact names with 1 to 4 words.
+  - Do not return alternatives.
+  - Do not add explanations or descriptions.
+  - Do not use markdown.
+  - Do not use prefixes such as "Topic:", "Column Topic:", "Answer:", or "Label:".
+  - Return only the topic text on one line.
+
+cea_selection: |
+  You are assisting with Semantic Table Annotation.
+
+  Select one final annotation label for the given table cell.
+
+  Cell value:
+  {cell_value}
+
+  Column name or inferred topic:
+  {column_name}
+
+  Row context:
+  {row_context}
+
+  Knowledge graph candidate entities:
+  {candidates}
+
+  Decision rules:
+  - If one KG candidate clearly matches the cell value and row context, return the candidate label exactly.
+  - If no KG candidate is suitable, return one short semantic annotation.
+  - Use row context to resolve ambiguous names.
+  - Prefer a KG candidate label when the cell is a named entity and the candidate fits the context.
+  - Use a generic semantic label only when the cell is not a named entity or KG candidates are unsuitable.
+  - Do not return candidate numbers.
+  - Do not return URLs or IDs.
+  - Do not invent a more specific entity than the evidence supports.
+  - Do not add explanations or descriptions.
+  - Do not use markdown.
+  - Do not return alternatives.
+  - Do not use prefixes such as "Final Annotation Label:", "Annotation:", "Answer:", "Label:", or "Entity:".
+  - Prefer compact labels with 1 to 5 words unless the selected KG candidate label is longer.
+  - Return only the label text on one line.
+
+cta_selection: |
+  You are assisting with Semantic Table Annotation.
+
+  Select one final semantic type for one table column.
+
+  Column name or inferred topic:
+  {column_name}
+
+  Representative column values:
+  {column_values}
+
+  Evidence from cell annotations:
+  {cell_annotations}
+
+  Candidate column types:
+  {type_candidates}
+
+  Decision rules:
+  - Return one final column type only.
+  - The final type must describe the semantic role of the whole column.
+  - If one KG candidate type clearly fits the column, return the candidate label exactly.
+  - If no KG candidate type is suitable, return one clean semantic column type.
+  - Use representative values and cell annotations as the main evidence.
+  - Use the column name as supporting evidence.
+  - Choose a type that is neither too broad nor too narrow.
+  - Do not over-specialize based on one value.
+  - Do not return candidate numbers.
+  - Do not return URLs or IDs.
+  - Do not add explanations or descriptions.
+  - Do not use markdown.
+  - Do not return alternatives.
+  - Do not use prefixes such as "Final Column Type:", "Column Type:", "Type:", "Answer:", or "Label:".
+  - Prefer compact labels with 1 to 4 words unless the selected KG candidate label is longer.
+  - Return only the type label text on one line.
