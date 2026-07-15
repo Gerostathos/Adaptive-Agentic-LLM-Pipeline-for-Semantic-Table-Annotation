@@ -1,0 +1,40 @@
+# Virtual environments
+.venv_ds/
+.venv/
+venv/
+env/
+
+# Environment variables / API keys
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Large/local datasets
+# data/toughtables/
+# data/biodivtab/
+# data/kaggle/
+data/raw/custom/
+logs/runs/2026-05-09/
+
+# Large files
+*.zip
+*.tar
+*.gz
+*.7z
+*.rar
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/settings.json
