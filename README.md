@@ -195,7 +195,7 @@ The presentation provides a concise overview of the architecture, workflow scena
 ### 1. Clone the Repository
 
 ```powershell
-git clone <repository-url>
+git clone https://github.com/Gerostathos/llm-semantic-table-annotation.git
 cd llm-semantic-table-annotation
 ```
 
