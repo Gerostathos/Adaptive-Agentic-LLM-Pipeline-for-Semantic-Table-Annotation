@@ -1,4 +1,4 @@
-# LLM Agent-Based Semantic Table Annotation Pipeline
+# Adaptive Agentic LLM Pipeline for Semantic Table Annotation
 
 A modular Python implementation inspired by the paper **“An LLM Agent-Based Complex Semantic Table Annotation Approach.”**
 
